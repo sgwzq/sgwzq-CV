@@ -1,0 +1,10 @@
+# LaTeX Make File
+*.aux
+*latexmk
+*.synctex.*
+*.fls
+*.log
+*.out
+
+# Vim Swap File
+*.sw*
