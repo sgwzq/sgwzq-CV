@@ -8,3 +8,7 @@
 
 # Vim Swap File
 *.sw*
+
+# Final PDF File
+*.pdf
+
