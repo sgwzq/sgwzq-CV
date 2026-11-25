@@ -3,6 +3,7 @@
 *latexmk
 *.synctex.*
 *.fls
+*.xdv
 *.log
 *.out
 

@@ -18,8 +18,8 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{hyphenat}
-\usepackage{fontawesome}
-\input{glyphtounicode}
+\usepackage{fontawesome5}
+\usepackage{iftex}
 
 
 %---------- FONT OPTIONS ----------
@@ -58,8 +58,11 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+% Include Unicode mappings for text extraction with pdfLaTeX.
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -118,7 +121,9 @@
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{%
+  \begin{itemize}[leftmargin=0.15in, label={}]%
+}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
@@ -126,25 +131,34 @@
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{document}
 
 %---------- HEADING ----------
 
+\newcommand{\campusMapURL}{%
+  https://map.baidu.com/poi/%
+  \%E5\%8D\%97\%E5\%BC\%80\%E5\%A4\%A7\%E5\%AD\%A6(%
+  \%E5\%85\%AB\%E9\%87\%8C\%E5\%8F\%B0\%E6\%A0\%A1\%E5\%8C\%BA)/%
+  @13043950.222081022,4710385.95953605,16.42z%
+  ?uid=7a84cea69d5be9e94d55473d&ugc_type=3&ugc_ver=1%
+  &device_ratio=2&compat=1&en_uid=7a84cea69d5be9e94d55473d%
+  &pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl%
+}
+
 \begin{center}
     \textbf{\Huge \scshape Ziqiu Wang} \\ \vspace{3pt}
     \small
-    \faMobile \hspace{.5pt} \href{tel:8615842271648}{+86 158 4227 1648}
+    \faMobile \hspace{.5pt} \href{tel:+16149031914}{+1 (614) 903-1914}
     $|$
-    \faAt \hspace{.5pt} \href{mailto:2312635@mail.nankai.edu.cn}{2312635@mail.nankai.edu.cn}
+    \faAt \hspace{.5pt}
+    \href{mailto:2312635@mail.nankai.edu.cn}{2312635@mail.nankai.edu.cn}
     $|$
-    %\faLinkedinSquare \hspace{.5pt} \href{https://www.linkedin.com/in/arasgungore}{LinkedIn}
+    \faLinkedin \hspace{.5pt}
+    \href{https://www.linkedin.com/in/ziqiu-wang-3b792542a/}{LinkedIn}
     $|$
-    \faGithub \hspace{.5pt} \href{https://github.com/sgwzq}{GitHub User: sgwzq}
+    \faGithub \hspace{.5pt} \href{https://github.com/sgwzq}{GitHub: sgwzq}
     $|$
-    %\faGlobe \hspace{.5pt} \href{https://arasgungore.github.io}{Portfolio}
-    $|$
-    \faMapMarker \hspace{.5pt} \href{https://map.baidu.com/poi/%E5%8D%97%E5%BC%80%E5%A4%A7%E5%AD%A6(%E5%85%AB%E9%87%8C%E5%8F%B0%E6%A0%A1%E5%8C%BA)/@13043950.222081022,4710385.95953605,16.42z?uid=7a84cea69d5be9e94d55473d&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&en_uid=7a84cea69d5be9e94d55473d&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl}{Tianjin, China}
+    \faMapMarker \hspace{.5pt} \href{\campusMapURL}{Tianjin, China}
 \end{center}
 
 
@@ -159,7 +173,9 @@
       {Nankai University
       % \normalfont{(Admission rate: 0.09\%)}
       }{Tianjin, China}
-      {B.Sc. in Boling School of Chemistry;   \textbf{GPA: 3.63/4.00}}{Jul 2023 \textbf{--} Jun 2026}
+      {B.Sc. in Chemistry, Boling School of Chemistry
+        \quad \textbf{GPA: 3.54/4.00}}
+      {Jul 2023 -- Nov 2026}
       {
       %Minor Degree in Computer Science;
       %\textbf{GPA: 3.58/4.00}
@@ -168,9 +184,15 @@
 	}
         \resumeSubHeadingListStart
         \small{\item{
-		\textbf{Relevant coursework:} Organic Chemistry(Clayden 2nd Edition), Physical Chemistry, Theoretical Mechanics, Electrodynamics, Quantum Chemistry(by Levine), Algorithms(Introduction to Algorithms by MIT), Mathmatical Methods in Physics(Self-Taught)
+        \textbf{Relevant coursework:} Quantum Chemistry (Szabo and Ostlund,
+        \emph{Modern Quantum Chemistry}), Physical Chemistry, Organic Chemistry
+        (Clayden et al., 2nd ed.), Theoretical Mechanics, Electrodynamics, and
+        Quantum Algorithms. Studied Mathematical Methods in Physics
+        independently.
 
-	    %\textbf{National University Admission Exam (YKS):} Ranked $75^{th}$ in Mathematics and Science among ca. 2.3 million candidates with a test score of 489.92/500. (Jul 2018)
+        %\textbf{National University Admission Exam (YKS):} Ranked $75^{th}$ in
+        %Mathematics and Science among ca. 2.3 million candidates with a test
+        %score of 489.92/500. (Jul 2018)
 	}
 }
         \resumeSubHeadingListEnd
@@ -179,7 +201,8 @@
       % {Kocaeli Science High School
       % \normalfont{(Admission rate: 0.85\%)}
       % }{Kocaeli, Turkey}
-      % {High School Diploma;   \textbf{GPA: 97.03/100}}{Sep 2014 \textbf{--} Jun 2018}
+      % {High School Diploma;   \textbf{GPA: 97.03/100}}
+      % {Sep 2014 \textbf{--} Jun 2018}
     
   \resumeSubHeadingListEnd
 
@@ -192,17 +215,30 @@
   \resumeSubHeadingListStart
     \small{\item{
         
-        \textbf{Languages:}{ C/C++, Python, MATLAB} \\ \vspace{3pt}
+        \textbf{Programming languages:} C, C++, Python, MATLAB
+        \\ \vspace{3pt}
+        \textbf{Scientific software:} Gaussian 16, ORCA, and CP2K
+        (quantum chemistry), Multiwfn (wavefunction analysis)
+        \\ \vspace{3pt}
+        \textbf{Other tools:} Git, Bash, LaTeX
+        \\ \vspace{3pt}
+        \textbf{Selected repositories}(click hyperlinks to open)
+        \begin{itemize}[nosep]
+          \item \href{https://github.com/sgwzq/QC-code-examples}
+            {\textbf{QC-code-examples}} -- Worked examples of Hartree--Fock,
+            DFT, and CIS methods.
+          \item \href{https://github.com/sgwzq/pyscf}
+            {\textbf{PySCF}} -- Contributions to algebraic diagrammatic
+            construction (ADC) methods.
+          \item \href{https://github.com/sgwzq/FT_EXPLAINED}
+            {\textbf{FT\_EXPLAINED}} -- A Fourier transform tutorial for NMR
+            spectroscopy.
+        \end{itemize}
+    %\textbf{Technologies:}{ Theoretical Mechanics, PySCF, NumPy, SciPy,
+    %Matplotlib, DataStructure\&Algorithms} \\ \vspace{3pt}
         
-	\textbf{Softwares:}\\
-	\begin{itemize}[nosep]
-		\item \textbf{Quantum Chemistry:} Gaussian16, ORCA, CP2K, PySCF 
-		\item \textbf{Wave Function Analysis:} Multiwfn 
-		\item \textbf{General:} Bash, Python(Numpy, Matplotlib, Scipy), LaTeX
-	\end{itemize}
-	%\textbf{Technologies:}{ Theoretical Mechanics, PySCF, NumPy, SciPy, Matplotlib, DataStructure\&Algorithms} \\ \vspace{3pt}
-        
-        %\textbf{Methodologies:}{ Quantum Chemistry Computing, Thermochemistry Analysis, Scientific Programming} \\ \vspace{3pt}
+        %\textbf{Methodologies:}{ Quantum Chemistry Computing, Thermochemistry
+        %Analysis, Scientific Programming} \\ \vspace{3pt}
         
     }}
   \resumeSubHeadingListEnd
@@ -216,70 +252,162 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Student at Nankai University}{Tianjin, China}
-      {Student}{Sep 2023 \textbf{--} Present, Full-time}
-        \resumeItemListStart
-	\resumeItem{Take courses like a college-of-chemistry student. For example Calculus, Physics, Physical Chemistry, CPP programming. \textbf{And I also worked as a teaching assistant to help other students.}}
-	    \resumeItem{Got very high scores in fundamental Mathematical and Physical classes. Advanced Mathematics I/II, Fundamentals of C++ Programming, Basic Physics I/II/III/IV, Physical Chemistry I and many other classes \textbf{all got As!}}
-	    \resumeItem{In 3rd year I take some cources from School of Physics and Computer Science. Such as Theoretical Mechanics, Electronics and Algorithms. Although these classes didnot give me a beautiful grade, But to be honest \textbf{I learned many useful knowledge for Theoretical Chemistry.}} 
-	    \resumeItem{I learned how to \textbf{get vibrational frequencies using Lagrange Methods}, how to \textbf{optimize many algorithms at $O(n\log (n))$ level}.}
-        \resumeItemListEnd
+      {Nankai University}{Tianjin, China}
+      {Undergraduate Student in Chemistry}{Sep 2023 -- Present, full-time}
+      \resumeItemListStart
+        \resumeItem{Tutored younger undergraduates in advanced mathematics and
+          introductory physics as a teaching assistant and peer mentor.}
+        \resumeItem{Earned A grades in Advanced Mathematics I--II, Linear
+          Algebra, Fundamentals of C++ Programming, Basic Physics I--IV, and
+          Physical Chemistry I.}
+        \resumeItem{Used Lagrangian mechanics to calculate vibrational
+          frequencies in third-year physics coursework. Studied binary
+          search and matrix-chain multiplication in
+          \emph{Introduction to Algorithms}.}
+      \resumeItemListEnd
 
     \resumeSubheading
-      {Undergraduate Researcher with Prof. Neil Qiang Su at Nankai University}{Tianjin, China}
-      {Undergraduate Researcher}{Sep 2025 \textbf{--} Present, Full-time}
-        \resumeItemListStart
-	\resumeItem{Worked with a Professor at School of Chemistry. \textbf{Using applied Computational Chemistry method in Gaussian 16 and CP2K to simulate experiments.}}
-	\resumeItem{During computing, I looked up many information of quantum chemistry in http://sobereva.com and http://bbs.keinsci.com. I learned many basic concepts like \textbf{Hybrid Functionals like B3LYP, basis sets like 6-31G(d), and solvation models like SMD, and basic operations like geometry optimization, frequency analysis.}}
-	\resumeItem{I worked with another prof. in School of Environment Science and Projects about \textbf{the degradation of Perfluoroalkyl and Polyfluoroalkyl Substances (PFAS)}. }
-        \resumeItemListEnd
+      {The Ohio State University}{Columbus, Ohio, USA}
+      {Undergraduate Research Intern, Prof. Alexander Sokolov}
+      {Aug 2026 -- Present, full-time}
+      \resumeItemListStart
+        \resumeItem{Implemented ADC in PySCF to calculate electronic
+          excitations under periodic boundary conditions.}
+        \resumeItem{Studied how direct inversion in the iterative subspace
+          (DIIS) accelerates convergence in electronic structure calculations,
+          alongside spin adaptation and the algebra of second quantization.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Nankai University}{Tianjin, China}
+      {Undergraduate Researcher, Prof. Neil Qiang Su}{Sep 2025 -- Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Ran many quantum chemistry calculations in
+          Gaussian 16 and CP2K to model experiments and analyzed the results.}
+        \resumeItem{Studied geometry optimization, vibrational frequency
+          analysis, and the choice
+          of functional (B3LYP), basis set (6-31G(d), def2-TZVP), and
+          solvation model (PCM, SMD) using resources from
+          \href{http://sobereva.com}{Sobereva} and
+          \href{http://bbs.keinsci.com}{Keinsci}.}
+        \resumeItem{Worked with a professor in environmental science and
+          engineering at Nankai to study how per- and polyfluoroalkyl
+          substances (PFAS) degrade, including both small molecules and
+          polymers.}
+      \resumeItemListEnd
 
     %% \resumeSubheading
       %% {Scale AI}{San Francisco, California, United States (Remote)}
       %% {Prompt Engineer}{Mar 2023 \textbf{--} Sep 2023, Freelance}
         %% \resumeItemListStart
-            %% \resumeItem{Crafted elaborate Turkish prompts for various generative AI tasks. Tailored prompts using well-defined formats such as natural language questions and structured inputs based on the task's domain to fine-tune the LLM, improving the chatbot's responses and enhancing overall performance.}
-            %% \resumeItem{Provided user feedback by reviewing and scoring the chatbot's responses to ensure they align with intended chatbot behaviors and the chatbot produces accurate and contextually appropriate responses to given prompts.}
-            %% \resumeItem{Engaged in collaborative meetings with cross-functional teams and project coordinators, actively seeking guidance, addressing queries, and collectively brainstorming strategies to generate higher-quality prompts.}
+            %% \resumeItem{Crafted elaborate Turkish prompts for various
+            %%   generative AI tasks. Tailored prompts using well-defined
+            %%   formats such as natural language questions and structured
+            %%   inputs based on the task's domain to fine-tune the LLM,
+            %%   improving the chatbot's responses and enhancing overall
+            %%   performance.}
+            %% \resumeItem{Provided user feedback by reviewing and scoring the
+            %%   chatbot's responses to ensure they align with intended chatbot
+            %%   behaviors and the chatbot produces accurate and contextually
+            %%   appropriate responses to given prompts.}
+            %% \resumeItem{Engaged in collaborative meetings with
+            %%   cross-functional teams and project coordinators, actively
+            %%   seeking guidance, addressing queries, and collectively
+            %%   brainstorming strategies to generate higher-quality prompts.}
         %% \resumeItemListEnd
 
     %\resumeSubheading
-      %{Max Planck Institute for Intelligent Systems}{Stuttgart, Baden\textbf{-}Württemberg, Germany}
+      %{Max Planck Institute for Intelligent Systems}
+      %{Stuttgart, Baden\textbf{-}Württemberg, Germany}
       %{Undergraduate Researcher}{Jun 2022 \textbf{--} Aug 2022, Internship}
         %\resumeItemListStart
-            %\resumeItem{Engaged in collaborative research within the Robotics, Collectives and Learning subgroup at the Physical Intelligence Department with Ph.D. students \href{https://www.linkedin.com/in/sinan-ozgun-demir-981311129/}{\color{blue}Sinan Özgün Demir} and \href{https://www.linkedin.com/in/alpkaracakol/}{\color{blue}Alp Can Karacakol} on a project about 3D printing and heat-assisted magnetic programming of soft machines under the supervision of \href{https://www.linkedin.com/in/metin-sitti-0a8a712/}{\color{blue}Prof. Dr. Metin Sitti}.}
-            %\resumeItem{Optimized a C++ ROS package for real-time conversion of 3D motion controller events to ROS messages, achieving high-frequency and buffer-free synchronization.}
-            %\resumeItem{Developed an Arduino Mega driver to activate a laser and pressure regulator, for monitoring coil temperatures and PID tuning to control the coil currents. Established a robust ROS-Arduino communication network by integrating ROSSerial and handshaking to simulate a 3D printing and magnetic programming process with Python.}
-            %% \resumeItem{Designed the project's system and software architecture, flowchart, and state machine diagram. Expanded G-code capabilities by incorporating spherical coordinates to specify the direction of magnetization for shape morphing.}
+            %\resumeItem{Engaged in collaborative research within the Robotics,
+            %  Collectives and Learning subgroup at the Physical Intelligence
+            %  Department with Ph.D. students
+            %  \href{https://www.linkedin.com/in/sinan-ozgun-demir-981311129/}
+            %  {\color{blue}Sinan Özgün Demir} and
+            %  \href{https://www.linkedin.com/in/alpkaracakol/}
+            %  {\color{blue}Alp Can Karacakol} on a project about 3D printing
+            %  and heat-assisted magnetic programming of soft machines under
+            %  the supervision of
+            %  \href{https://www.linkedin.com/in/metin-sitti-0a8a712/}
+            %  {\color{blue}Prof. Dr. Metin Sitti}.}
+            %\resumeItem{Optimized a C++ ROS package for real-time conversion
+            %  of 3D motion controller events to ROS messages, achieving
+            %  high-frequency and buffer-free synchronization.}
+            %\resumeItem{Developed an Arduino Mega driver to activate a laser
+            %  and pressure regulator, for monitoring coil temperatures and PID
+            %  tuning to control the coil currents. Established a robust
+            %  ROS-Arduino communication network by integrating ROSSerial and
+            %  handshaking to simulate a 3D printing and magnetic programming
+            %  process with Python.}
+            %% \resumeItem{Designed the project's system and software
+            %%   architecture, flowchart, and state machine diagram. Expanded
+            %%   G-code capabilities by incorporating spherical coordinates to
+            %%   specify the direction of magnetization for shape morphing.}
         %\resumeItemListEnd
     
     %% \resumeSubheading
       %% {Nanonetworking Research Group, Boğaziçi University}{Istanbul, Turkey}
       %% {Undergraduate Researcher}{Oct 2021 \textbf{--} Jun 2022, Part-time}
         %% \resumeItemListStart
-            %% \resumeItem{Worked on the “Design and Implementation of Molecular Communication Systems Using Index Modulation” project under the supervision of \href{https://www.linkedin.com/in/alipusane/}{\color{blue}Prof. Dr. Ali Emre Pusane}.}
-            %% \resumeItem{Simulated the Brownian motion of molecules in a SISO MCvD system and predicted simulation parameters such as receiver radius, diffusion coefficient, and transmitter-receiver distance using CNNs with Keras and TensorFlow.}
-            %% \resumeItem{Plotted the arrival of molecules per symbol duration in a SISO MCvD system using Binomial, Poisson, and Gaussian model approximations with MATLAB.}
-            %% \resumeItem{Ran Monte Carlo simulations of the Gaussian model to encode and decode randomized binary sequences in a SISO MCvD system using BCSK modulation technique and calculated the bit error rate on Z-channel.}
+            %% \resumeItem{Worked on the “Design and Implementation of
+            %%   Molecular Communication Systems Using Index Modulation”
+            %%   project under the supervision of
+            %%   \href{https://www.linkedin.com/in/alipusane/}
+            %%   {\color{blue}Prof. Dr. Ali Emre Pusane}.}
+            %% \resumeItem{Simulated the Brownian motion of molecules in a SISO
+            %%   MCvD system and predicted simulation parameters such as
+            %%   receiver radius, diffusion coefficient, and
+            %%   transmitter-receiver distance using CNNs with Keras and
+            %%   TensorFlow.}
+            %% \resumeItem{Plotted the arrival of molecules per symbol duration
+            %%   in a SISO MCvD system using Binomial, Poisson, and Gaussian
+            %%   model approximations with MATLAB.}
+            %% \resumeItem{Ran Monte Carlo simulations of the Gaussian model to
+            %%   encode and decode randomized binary sequences in a SISO MCvD
+            %%   system using BCSK modulation technique and calculated the bit
+            %%   error rate on Z-channel.}
         %% \resumeItemListEnd
 
     %% \vspace{20pt}
     %\resumeSubheading
       %{SESTEK Speech Enabled Software Technologies}{Istanbul, Turkey}
-      %{AI Research and Development Intern}{Jan 2022 \textbf{--} Feb 2022, Internship}
+      %{AI Research and Development Intern}
+      %{Jan 2022 \textbf{--} Feb 2022, Internship}
         %\resumeItemListStart
-            %% \resumeItem{Executed diverse NLP tasks, including NER, POS tagging, sentiment analysis, text classification, and extractive and generative QA using transformers and Hugging Face libraries. Conducted a thorough literature review on information retrieval and reading comprehension to stay updated on SOTA ML models.}
-            %\resumeItem{Developed a generative QA system with dense passage retrieval (DPR) and retrieval-augmented generation (RAG) techniques using the Haystack framework and PyTorch.}
-            %\resumeItem{Worked on a Turkish open-domain QA system made by fine-tuning BERTurk and XLM-Roberta models. Tabularized exact match and F1 scores derived from DeepMind's XQuAD and various Turkish data sets.}
+            %% \resumeItem{Executed diverse NLP tasks, including NER, POS
+            %%   tagging, sentiment analysis, text classification, and
+            %%   extractive and generative QA using transformers and Hugging
+            %%   Face libraries. Conducted a thorough literature review on
+            %%   information retrieval and reading comprehension to stay
+            %%   updated on SOTA ML models.}
+            %\resumeItem{Developed a generative QA system with dense passage
+            %  retrieval (DPR) and retrieval-augmented generation (RAG)
+            %  techniques using the Haystack framework and PyTorch.}
+            %\resumeItem{Worked on a Turkish open-domain QA system made by
+            %  fine-tuning BERTurk and XLM-Roberta models. Tabularized exact
+            %  match and F1 scores derived from DeepMind's XQuAD and various
+            %  Turkish data sets.}
         %\resumeItemListEnd
 
     %% \resumeSubheading
       %% {Meteksan Defense Industry Inc.}{Ankara, Turkey}
-      %% {Analog Design Engineering Intern}{Jul 2021 \textbf{--} Aug 2021, Internship}
+      %% {Analog Design Engineering Intern}
+      %{Jul 2021 \textbf{--} Aug 2021, Internship}
         %% \resumeItemListStart
-            %% \resumeItem{Designed and simulated numerous analog circuits such as voltage-mode controlled buck converter, phase-shifted full-bridge isolated DC-DC converter, and EMI filters with LTspice. Integrated these circuits and implemented a 320 W power distribution unit to be used in a radar system's power circuit board.}
-            %% \resumeItem{Researched real-world compatible electronic components to be used in such circuits including GaNFETs, high-side gate drivers, and Schottky diodes.}
-            %% \resumeItem{Assembled PCBs of both common and differential mode filters and used VNA Bode 100 to measure the cut-off frequencies.}
+            %% \resumeItem{Designed and simulated numerous analog circuits such
+            %%   as voltage-mode controlled buck converter, phase-shifted
+            %%   full-bridge isolated DC-DC converter, and EMI filters with
+            %%   LTspice. Integrated these circuits and implemented a 320 W
+            %%   power distribution unit to be used in a radar system's power
+            %%   circuit board.}
+            %% \resumeItem{Researched real-world compatible electronic
+            %%   components to be used in such circuits including GaNFETs,
+            %%   high-side gate drivers, and Schottky diodes.}
+            %% \resumeItem{Assembled PCBs of both common and differential mode
+            %%   filters and used VNA Bode 100 to measure the cut-off
+            %%   frequencies.}
         %% \resumeItemListEnd
     
   \resumeSubHeadingListEnd
@@ -292,17 +420,30 @@
   \vspace{2pt}
   \resumeSubHeadingListStart
     \small{\item{
-        %\textbf{High Honors Degree:}{ Awarded to Bachelor alumni who have graduated with a GPA greater than or equal to 3.50 by Boğaziçi University. (Jul 2023)} \\ \vspace{3pt}
+        %\textbf{High Honors Degree:}{ Awarded to Bachelor alumni who have
+        %graduated with a GPA greater than or equal to 3.50 by Boğaziçi
+        %University. (Jul 2023)} \\ \vspace{3pt}
 
-	    \textbf{Provincial 3rd Prize on The Chinese Mathematics Competitions for College Students:}{ Awarded to students who take part in a mathematical competition organized by \textbf{the Chinese Mathematics Society} (Sep 2024 \textbf{--} Jan 2025)} \\ \vspace{3pt}
+        \textbf{Provincial Third Prize}, Chinese Mathematics Competitions
+        for College Students, Chinese Mathematical Society
+        (Sep 2024 -- Jan 2025). \\ \vspace{3pt}
     
-        % \textbf{National University Admission Exam (YKS):}{ Ranked $75^{th}$ in Mathematics and Science among ca. 2.3 million candidates with a test score of 489.92/500. (Jul 2018)} \\ \vspace{3pt}
+        % \textbf{National University Admission Exam (YKS):}{ Ranked $75^{th}$
+        % in Mathematics and Science among ca. 2.3 million candidates with a
+        % test score of 489.92/500. (Jul 2018)} \\ \vspace{3pt}
         
-        %\textbf{KYK Outstanding Success Scholarship:}{ Awarded to students who have been ranked in the top 100 on National University Admission Exam by Higher Education Credit and Hostels Institution (KYK). (Sep 2018 \textbf{--} Jun 2023)} \\ \vspace{3pt}
+        %\textbf{KYK Outstanding Success Scholarship:}{ Awarded to students who
+        %have been ranked in the top 100 on National University Admission Exam
+        %by Higher Education Credit and Hostels Institution (KYK). (Sep 2018
+        %\textbf{--} Jun 2023)} \\ \vspace{3pt}
         
-        % \textbf{Boğaziçi University Success Scholarship:}{ Awarded to students who have been ranked in the top 100 on National University Admission Exam by Boğaziçi University. (Sep 2018 \textbf{--} Jun 2023)} \\ \vspace{3pt}
+        % \textbf{Boğaziçi University Success Scholarship:}{ Awarded to
+        % students who have been ranked in the top 100 on National University
+        % Admission Exam by Boğaziçi University. (Sep 2018 \textbf{--} Jun
+        % 2023)} \\ \vspace{3pt}
         
-        \textbf{Level 2 Computer Proficiency Certificate:}{ An award given to those who can efficiently use advanced functionals given by Office, such as Categorized Summary in Excel, Adding page number and date in Word and Powerpoint and so on. (Nov 2023)}
+        \textbf{Level 2 Computer Proficiency Certificate}
+        in Microsoft Office (Excel, Word, and PowerPoint), Nov 2023.
     }}
   \resumeSubHeadingListEnd
 
@@ -310,29 +451,50 @@
 
 %----------- PROJECTS -----------
 
-\section{Projects}
-    \vspace{3pt}
-    \resumeSubHeadingListStart
-      
-      \resumeProjectHeading
-        {\textbf{FT\_EXPLAINED} $|$ \emph{\href{https://github.com/sgwzq/FT_EXPLAINED}{\color{blue}GitHub}}}{}
-          \resumeItemListStart
-            \resumeItem{When I learned the orginal of FT-NMR, I was curious about how Fourier Transform worked on NMR Devices. So I searched on Bing and founded a outdated demonstrating how Fourier Transform was applied. It was written in Python, but some functions in older versions of NumPy were deprecated in the newer version. So I forked it and made it up.}
-          \resumeItemListEnd
+%\section{Projects}
+    %\vspace{3pt}
+    %\resumeSubHeadingListStart
       
       %\resumeProjectHeading
-        %{\textbf{Chess Bot} $|$ \emph{\href{https://github.com/arasgungore/chess-bot}{\color{blue}GitHub}}}{}
+        %{\textbf{FT\_EXPLAINED} $|$
+          %\emph{\href{https://github.com/sgwzq/FT_EXPLAINED}
+            %{\color{blue}GitHub}}}{}
           %\resumeItemListStart
-            %\resumeItem{A C++ project in which you can play chess against an AI with a specified decision tree depth that uses alpha-beta pruning algorithm to predict the optimal move. Aside from basic moves, this mini chess engine also implements chess rules such as castling, en passant, fifty-move rule, threefold repetition, and pawn promotion.}
+            %\resumeItem{When I learned the orginal of FT-NMR, I was curious
+              %about how Fourier Transform worked on NMR Devices. So I searched
+              %on Bing and founded a outdated demonstrating how Fourier
+              %Transform was applied. It was written in Python, but some
+              %functions in older versions of NumPy were deprecated in the
+              %newer version. So I forked it and made it up.}
           %\resumeItemListEnd
       
       %\resumeProjectHeading
-        %{\textbf{DS\&A Projects} $|$ \emph{\href{https://github.com/arasgungore/CMPE250-projects}{\color{blue}GitHub}}}{}
+        %{\textbf{Chess Bot} $|$
+        %  \emph{\href{https://github.com/arasgungore/chess-bot}
+        %    {\color{blue}GitHub}}}{}
           %\resumeItemListStart
-            %\resumeItem{Five Java projects that apply DS\&A concepts such as discrete-event simulation using priority queues, Dijkstra's shortest path algorithm, Prim's algorithm to find the minimum spanning tree, Dinic's algorithm for maximum flow problems, and weighted job scheduling with dynamic programming to real-world problems.}
+            %\resumeItem{A C++ project in which you can play chess against an
+            %  AI with a specified decision tree depth that uses alpha-beta
+            %  pruning algorithm to predict the optimal move. Aside from basic
+            %  moves, this mini chess engine also implements chess rules such
+            %  as castling, en passant, fifty-move rule, threefold repetition,
+            %  and pawn promotion.}
           %\resumeItemListEnd
       
-    \resumeSubHeadingListEnd
+      %\resumeProjectHeading
+        %{\textbf{DS\&A Projects} $|$
+        %  \emph{\href{https://github.com/arasgungore/CMPE250-projects}
+        %    {\color{blue}GitHub}}}{}
+          %\resumeItemListStart
+            %\resumeItem{Five Java projects that apply DS\&A concepts such as
+            %  discrete-event simulation using priority queues, Dijkstra's
+            %  shortest path algorithm, Prim's algorithm to find the minimum
+            %  spanning tree, Dinic's algorithm for maximum flow problems, and
+            %  weighted job scheduling with dynamic programming to real-world
+            %  problems.}
+          %\resumeItemListEnd
+      
+    %\resumeSubHeadingListEnd
 
 
 
@@ -342,9 +504,19 @@
   % \vspace{2pt}
   % \resumeSubHeadingListStart
     % \small{\item{
-        % \textbf{Major coursework:}{ Materials Science, Electrical Circuits I-II, Digital System Design, Numerical Methods, Probability Theory, Electronics I-II, Signals and Systems, Electromagnetic Field Theory, Energy Conversion, System Dynamics and Control, Communication Engineering, Pattern Recognition, Introduction to Digital Signal Processing, Introduction to Digital Communications, Introduction to Database Systems, Introduction to Image Processing, Machine Vision} \\ \vspace{3pt}
+        % \textbf{Major coursework:}{ Materials Science, Electrical Circuits
+        % I-II, Digital System Design, Numerical Methods, Probability Theory,
+        % Electronics I-II, Signals and Systems, Electromagnetic Field Theory,
+        % Energy Conversion, System Dynamics and Control, Communication
+        % Engineering, Pattern Recognition, Introduction to Digital Signal
+        % Processing, Introduction to Digital Communications, Introduction to
+        % Database Systems, Introduction to Image Processing, Machine Vision}
+        % \\ \vspace{3pt}
         
-        % \textbf{Minor coursework:}{ Discrete Computational Structures, Introduction to Object-Oriented Programming, Data Structures and Algorithms, Computer Organization, Fundamentals of Software Engineering}
+        % \textbf{Minor coursework:}{ Discrete Computational Structures,
+        % Introduction to Object-Oriented Programming, Data Structures and
+        % Algorithms, Computer Organization, Fundamentals of Software
+        % Engineering}
     % }}
   % \resumeSubHeadingListEnd
 
@@ -356,7 +528,9 @@
   % \resumeSubHeadingListStart
     
     % \resumeOrganizationHeading
-      % {Procter \& Gamble VIA Certificate Program}{Feb 2022}{Project Management and Personal Productivity}
+      % {Procter \& Gamble VIA Certificate Program}
+      % {Feb 2022}
+      % {Project Management and Personal Productivity}
     
   % \resumeSubHeadingListEnd
 
@@ -368,7 +542,9 @@
   % \resumeSubHeadingListStart
     
     % \resumeOrganizationHeading
-      % {Institute of Electrical and Electronics Engineers (IEEE)}{Feb 2022 -- Present}{Student Member}
+      % {Institute of Electrical and Electronics Engineers (IEEE)}
+      % {Feb 2022 -- Present}
+      % {Student Member}
     
   % \resumeSubHeadingListEnd
 
